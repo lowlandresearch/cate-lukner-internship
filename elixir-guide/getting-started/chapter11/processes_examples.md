@@ -64,4 +64,23 @@ Function: #Function<21.126501267/0 in :erl_eval.expr/5>
     Args: []
 ```
 
+To illustrate an example of a process in elixir, I wrote the following module in the file `example_process_module.ex`:
+```elixir
+# Example Module containing a process with a recieve block.
 
+defmodule SimpleProcess do
+    def say_hello() do
+        receive do
+            _ ->
+                IO.puts("Hello to you!")
+        end
+    end
+end
+```
+Here is an example of sending a message to this process:
+```elixir
+iex(3)> send pid, :"I am some random thing"
+Hello to you!
+:"I am some random thing"
+iex(4)> send pid, :"I am some random thing"
+```
