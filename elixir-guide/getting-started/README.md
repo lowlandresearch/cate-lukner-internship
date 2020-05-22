@@ -9,3 +9,5 @@
 8:45AM - 12:45PM ~ Chapters 5-8 and 10 completed; Chapters 9 and 11 started but not completed.
 #### May 21st, 2020
 7:45AM - 1PM ~ Re-doing the documentation for previous levels (it was not pretty); Chapters 11-15
+#### May 22nd, 2020
+8:05AM - 1PM ~ Chapters 16-20
