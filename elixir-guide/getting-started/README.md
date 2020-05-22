@@ -2,7 +2,7 @@
 
 ## Time Spent:
 
-**May 19th, 2020i**
+**May 19th, 2020**
 * 10:20AM -10:45AM ~ Setting up file systems; installing Elixir 
 * 11:00AM - 11:30AM ~ Introduction; Starting Basic Types
 * 5:30PM - 6:45PM ~ Chapters 2-4 completed
