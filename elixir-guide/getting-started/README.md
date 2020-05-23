@@ -15,3 +15,7 @@
 
 **May 22nd, 2020**
 * 8:05AM - 1PM ~ Chapters 16-20
+
+**May 23rd, 2020**
+* 7:30AM - 11:30AM ~ Chapters 21-23 (It was all Chapter 21's fault); Getting Started section completed
+
