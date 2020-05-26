@@ -50,7 +50,7 @@ defmodule KV.Registry do
             ref = Process.monitor(bucket)
             refs = Map.put(refs, ref, name)
             names = Map.put(names, name, bucket)
-            {:noreply, Map.put(names, name, bucket)}
+            {:noreply, {names, refs}} 
         end
     end
 
