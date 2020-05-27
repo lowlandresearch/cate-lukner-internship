@@ -5,9 +5,13 @@ defmodule KVServer do
   Starts accepting connections on the given `port`.
   """
   def accept(port) do
-    {:ok, socket} = :gen_tcp.listen(port,
-                      [:binary, packet: :line, active: false, reuseaddr: true])
-    Logger.info "Accepting connections on port #{port}"
+    {:ok, socket} =
+      :gen_tcp.listen(
+        port,
+        [:binary, packet: :line, active: false, reuseaddr: true]
+      )
+
+    Logger.info("Accepting connections on port #{port}")
     loop_acceptor(socket)
   end
 
@@ -19,11 +23,11 @@ defmodule KVServer do
   end
 
   defp serve(socket) do
-    msg = 
+    msg =
       with {:ok, data} <- read_line(socket),
-            {:ok, command} <- KVServer.Command.parse(data),
-            do: KVServer.Command.run(command)
-          
+           {:ok, command} <- KVServer.Command.parse(data),
+           do: KVServer.Command.run(command)
+
     write_line(socket, msg)
     serve(socket)
   end
@@ -50,7 +54,7 @@ defmodule KVServer do
   end
 
   defp write_line(socket, {:error, error}) do
-    #Unknown error; write to the client and exit
+    # Unknown error; write to the client and exit
     :gen_tcp.send(socket, "ERROR\r\n")
     exit(error)
   end
