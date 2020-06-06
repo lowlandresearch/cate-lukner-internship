@@ -15,7 +15,7 @@ defmodule AppWeb.ItemControllerTest do
   describe "index" do
     test "lists all items", %{conn: conn} do
       conn = get(conn, Routes.item_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Items"
+      assert html_response(conn, 200) =~ "todos"
     end
   end
 
@@ -30,11 +30,11 @@ defmodule AppWeb.ItemControllerTest do
     test "redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.item_path(conn, :create), item: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.item_path(conn, :show, id)
+      assert redirected_to(conn) == Routes.item_path(conn, :index)
+      assert html_response(conn, 302) =~ "redirected"
 
-      conn = get(conn, Routes.item_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Item"
+      conn = get(conn, Routes.item_path(conn, :index))
+      assert html_response(conn, 200) =~ @create_attrs.text
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -48,7 +48,7 @@ defmodule AppWeb.ItemControllerTest do
 
     test "renders form for editing chosen item", %{conn: conn, item: item} do
       conn = get(conn, Routes.item_path(conn, :edit, item))
-      assert html_response(conn, 200) =~ "Edit Item"
+      assert html_response(conn, 200) =~ item.text
     end
   end
 
@@ -57,10 +57,10 @@ defmodule AppWeb.ItemControllerTest do
 
     test "redirects to :index page when item data is valid", %{conn: conn} do
       conn = post(conn, Routes.item_path(conn, :create), item: @create_attrs)
-    
+
       assert redirected_to(conn) == Routes.item_path(conn, :index)
       assert html_response(conn, 302) =~ "redirected"
-    
+
       conn = get(conn, Routes.item_path(conn, :index))
       assert html_response(conn, 200) =~ @create_attrs.text
     end
